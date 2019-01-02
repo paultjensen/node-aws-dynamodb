@@ -6,6 +6,7 @@
   "author": "Paul Jensen (paul.t.jensen@gmail.com)",
   "license": "",
   "dependencies": {
-    "aws-sdk": "latest"
+    "aws-sdk": "latest",
+    "winston": "latest"
   }
 }

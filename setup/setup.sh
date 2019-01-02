@@ -24,3 +24,19 @@ wget https://s3-us-west-2.amazonaws.com/dynamodb-local/dynamodb_local_latest.tar
 tar -xvf dynamodb_local_latest.tar.gz
 rm dynamodb_local_latest.tar.gz
 java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb
+
+#Install AWS CLI
+sudo apt install awscli
+
+#Create DynamoDB Table
+aws dynamodb create-table \
+    --table-name test-table \
+    --region us-east-1 \
+    --attribute-definitions \
+        AttributeName=item_key,AttributeType=S \
+    --key-schema AttributeName=item_key,KeyType=HASH \
+    --provisioned-throughput ReadCapacityUnits=50,WriteCapacityUnits=100 \
+    --endpoint-url http://localhost:8000
+
+#Delete DynamoDb Table
+#aws dynamodb delete-table --region us-east-1 --table-name test-table --endpoint-url http://localhost:8000
